@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn about Dream Car - Your trusted partner in finding the perfect luxury vehicle">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <title>About Us - DREAM CAR</title>
+    <style>
+        /* Page-specific styles */
+        .about-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin: 0 20px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius-lg);
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            padding: 40px 20px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .mission-card,
+        .vision-card {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition);
+        }
+
+        .mission-card:hover,
+        .vision-card:hover {
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-5px);
+        }
+
+        .mission-card h3,
+        .vision-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mission-card h3 i,
+        .vision-card h3 i {
+            font-size: 2.5rem;
+        }
+
+        .mission-card p,
+        .vision-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: var(--bg-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-8px);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .team-info {
+            padding: 20px;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            padding: 60px 40px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            color: white;
+            margin: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo" aria-label="Dream Car Home" onclick="window.location.href='../index.html'">
+            <i class="fa-solid fa-car" style="color:var(--primary-color);"></i>
+            <span style="color:var(--primary-color);">Dream Car</span>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../searchpage/it.html">Search</a></li>
+                <li><a href="../bookingpage/booking.html">Book</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="../reviews/reviews.html">Reviews</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            <a href="../login/login.html"><button class="button1" aria-label="Login">Login</button></a>
+            <a href="../contact us/contactUs.html"><button class="button2" aria-label="Contact Us">Contact
+                    Us</button></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1>Welcome to Dream Car</h1>
+                <p>Your trusted partner in finding the perfect luxury vehicle. We've been making automotive dreams come
+                    true since 2010.</p>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="about-section">
+            <h2>Our Story</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <p>Founded in 2010, Dream Car began with a simple mission: to revolutionize the luxury car buying
+                        experience. What started as a small dealership with a passion for premium vehicles has grown
+                        into one of the most trusted names in the automotive industry.</p>
+                    <p>We believe that purchasing a car should be an exciting journey, not a stressful transaction.
+                        That's why we've built our business on transparency, quality, and exceptional customer service.
+                    </p>
+                    <p>Today, we're proud to serve thousands of satisfied customers, offering an extensive collection of
+                        the world's finest automobiles from brands like BMW, Mercedes-Benz, Audi, Tesla, and more.</p>
+                </div>
+                <img src="../images1/land1.jpg" alt="Dream Car showroom" class="story-image">
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="about-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Premium Vehicles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="about-section">
+            <h2>Mission & Vision</h2>
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <h3>
+                        <i class="fa-solid fa-bullseye"></i>
+                        Our Mission
+                    </h3>
+                    <p>To provide an unparalleled car buying experience by offering the finest selection of luxury
+                        vehicles, backed by exceptional customer service and transparent pricing. We strive to make
+                        every customer's dream car a reality.</p>
+                </div>
+                <div class="vision-card">
+                    <h3>
+                        <i class="fa-solid fa-eye"></i>
+                        Our Vision
+                    </h3>
+                    <p>To be the world's most trusted and innovative luxury car dealership, setting new standards in
+                        customer satisfaction and automotive excellence. We envision a future where buying your dream
+                        car is seamless, exciting, and rewarding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="about-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Michael Anderson</div>
+                        <div class="team-role">CEO & Founder</div>
+                        <div class="team-bio">Visionary leader with 20+ years in luxury automotive industry.</div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Sarah Johnson</div>
+                        <div class="team-role">Sales Director</div>
+                        <div class="team-bio">Expert in customer relations and premium vehicle sales.</div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">David Chen</div>
+                        <div class="team-role">Chief Mechanic</div>
+                        <div class="team-bio">Master technician specializing in luxury vehicle maintenance.</div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Emily Rodriguez</div>
+                        <div class="team-role">Customer Success Manager</div>
+                        <div class="team-bio">Dedicated to ensuring exceptional customer experiences.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Find Your Dream Car?</h2>
+            <p>Explore our extensive collection of premium vehicles and start your journey today.</p>
+            <a href="../searchpage/it.html" class="cta-button">Explore Inventory</a>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Subscribe to our newsletter</h3>
+        <form class="inp" aria-label="Newsletter subscription" onsubmit="event.preventDefault();">
+            <input type="email" class="email" placeholder="Input your email" aria-label="Email address" required>
+            <button class="butt" type="submit" aria-label="Subscribe">Subscribe</button>
+        </form>
+        <h3 class="logo">Car Dealership Hub</h3>
+        <nav class="footer-links" aria-label="Footer links">
+            <a href="#pricing">Pricing</a>
+            <a href="aboutus.html">About us</a>
+            <a href="#features">Features</a>
+            <a href="#help">Help Center</a>
+            <a href="../contact us/contactUs.html">Contact us</a>
+            <a href="#faqs">FAQs</a>
+            <a href="#careers">Careers</a>
+        </nav>
+        <div class="footer-bottom">
+            <a href="#">© 2025 Brand, Inc</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#sitemap">Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">↑</button>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

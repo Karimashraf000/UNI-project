@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DREAM CAR - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url('peter-broomfield-m3m-lnR90uM-unsplash.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 850px;
+            height: 550px;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .form-container {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            padding: 50px 40px;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .login-container {
+            left: 0;
+            z-index: 2;
+        }
+
+        .register-container {
+            left: 0;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: all 0.6s ease-in-out;
+            z-index: 10;
+        }
+
+        .overlay {
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            background: linear-gradient(to right, #2563EB, #293964);
+            color: #fff;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .overlay-left {
+            left: 0;
+        }
+
+        .overlay-right {
+            right: 0;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        .overlay h1 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .overlay p {
+            color: #fff;
+            padding: 0 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border-color: #2563EB;
+        }
+
+        button {
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .ghost {
+            background: transparent;
+            border: 1px solid #fff;
+            margin-top: 20px;
+        }
+
+        .ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #16213e;
+            z-index: 100;
+        }
+
+        .logo span {
+            color: #e94560;
+        }
+
+        .toggle-text {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .toggle-btn {
+            color: #2563EB;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        /* Animation classes */
+        .container.right-panel-active .login-container {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .container.right-panel-active .register-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+        }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                width: 90%;
+                height: auto;
+                min-height: 600px;
+            }
+
+            .form-container,
+            .overlay-container {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 40px 30px;
+            }
+
+            .overlay {
+                display: none;
+            }
+
+            .container.right-panel-active .login-container,
+            .container.right-panel-active .register-container {
+                transform: none;
+            }
+
+            .logo {
+                position: relative;
+                top: 15px;
+                left: 0;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="logo">DREAM<span> CAR</span></div>
+
+        <!-- Login Form -->
+        <div class="form-container login-container">
+            <form id="loginForm">
+                <br>
+                <h1>Sign In to Your Account</h1>
+                <div class="form-group">
+                    <input type="email" id="loginEmail" placeholder="Email Address" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="Password" required />
+                </div>
+                <button type="submit">Sign In</button>
+                <p class="toggle-text">Don't have an account?<br><span class="toggle-btn"
+                        onclick="toggleForms()">Register here</span></p>
+            </form>
+        </div>
+
+        <!-- Register Form -->
+        <div class="form-container register-container">
+            <form id="registerForm">
+                <h1>Create New Account</h1>
+                <div class="form-group">
+                    <input type="text" id="registerName" placeholder="Full Name" required />
+                </div>
+                <div class="form-group">
+                    <input type="email" id="registerEmail" placeholder="Email Address" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required />
+                </div>
+                <button type="submit">Register Now</button>
+                <p class="toggle-text">Already registered?<br><span class="toggle-btn" onclick="toggleForms()">Sign in
+                        here</span></p>
+            </form>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with our exclusive car collection, please login with your personal info</p>
+                    <button class="ghost" onclick="toggleForms()">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Car Enthusiast!</h1>
+                    <p>Enter your personal details and begin your journey with our luxury car collection</p>
+                    <button class="ghost" onclick="toggleForms()">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            const container = document.getElementById('container');
+            container.classList.toggle('right-panel-active');
+        }
+
+        // Registration
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please complete all fields');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters');
+                return;
+            }
+
+            // Save to localStorage
+            const userData = { name, email, password };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            alert('Registration complete! You can now sign in.');
+            toggleForms();
+        });
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const storedData = localStorage.getItem('userData');
+            if (!storedData) {
+                alert('No registered user found. Please register first.');
+                return;
+            }
+
+            const { email: savedEmail, password: savedPassword, name } = JSON.parse(storedData);
+
+            if (email === savedEmail && password === savedPassword) {
+                alert(`Welcome back, ${name}!`);
+                localStorage.setItem('authToken', 'sampleToken123');
+                window.location.href = '../index.html';
+            } else {
+                alert('Invalid email or password');
+            }
+        });
+
+        // Auto-redirect if already logged in
+        window.addEventListener('DOMContentLoaded', () => {
+            const authToken = localStorage.getItem('authToken');
+            if (authToken) {
+                const confirmRedirect = confirm('You are already logged in! Go to home page?');
+                if (confirmRedirect) {
+                    window.location.href = '../index.html';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

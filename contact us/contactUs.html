@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact Dream Car - Get in touch with us" />
+    <title>Dream Car | Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        main {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .contact-container {
+            background-color: #fff;
+            margin: 30px 6px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .contact-img {
+            flex: 1 1 320px;
+            min-width: 220px;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-img img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .contact-img h3 {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            flex: 1 1 320px;
+            min-width: 260px;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+            padding: 24px 18px;
+        }
+
+        .contact-form input[type="text"].textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        .contact-names {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-names>div {
+            flex: 1 1 120px;
+        }
+
+        .contact-map {
+            margin: 40px auto 0 auto;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .contact-map img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+        }
+
+        .contact-map a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 12px 0;
+            transition: background-color var(--transition);
+        }
+
+        .contact-map a:hover,
+        .contact-map a:focus {
+            background-color: var(--primary-dark);
+            outline: none;
+        }
+
+        .contact-map h2 {
+            color: var(--primary-color);
+            margin: 18px 0 8px 0;
+        }
+
+        .contact-map p {
+            margin: 4px 0;
+            color: #333;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 900px) {
+            .contact-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 24px;
+            }
+
+            .contact-img,
+            .contact-form {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-container {
+                padding: 10px;
+            }
+
+            .contact-img img {
+                max-width: 100%;
+            }
+
+            .contact-form {
+                padding: 12px 4px;
+            }
+
+            .contact-map {
+                margin: 24px auto 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo" aria-label="Dream Car Home" onclick="window.location.href='../index.html'"
+            style="cursor: pointer;">
+            <i class="fa-solid fa-car" style="color:var(--primary-color);"></i>
+            <span style="color:var(--primary-color);">Dream Car</span>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../searchpage/it.html">Search</a></li>
+                <li><a href="../bookingpage/booking.html">Book</a></li>
+                <li><a href="../aboutus/aboutus.html">About Us</a></li>
+                <li><a href="../reviews/reviews.html">Reviews</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            <a href="../login/login.html"><button class="button1" aria-label="Login">Login</button></a>
+            <a href="contactUs.html"><button class="button2" aria-label="Contact Us">Contact Us</button></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-container animate-on-scroll" aria-label="Contact form and image">
+            <div class="contact-img">
+                <h3>Fill the form to contact us</h3>
+                <img src="images/WhatsApp Image 2025-05-07 at 12.00.32_c1ff39c8.jpg" alt="Contact us illustration" />
+            </div>
+            <form class="contact-form" id="contactForm" aria-label="Contact form">
+                <div class="contact-names">
+                    <div>
+                        <label for="Fname">First Name</label>
+                        <input type="text" id="Fname" name="Fname" placeholder="First name" required />
+                    </div>
+                    <div>
+                        <label for="Lname">Last Name</label>
+                        <input type="text" id="Lname" name="Lname" placeholder="Last name" required />
+                    </div>
+                </div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="ABC@mail.com" required />
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+20" maxlength="15" minlength="10" required />
+                <label for="problem">Which problem are you facing?</label>
+                <select id="problem" name="problem" required>
+                    <option value="" disabled selected>Select a problem</option>
+                    <option>General inquiry</option>
+                    <option>Sales</option>
+                    <option>Technical support</option>
+                    <option>Other</option>
+                </select>
+                <label for="help">How can we help you?</label>
+                <input type="text" id="help" name="help" class="textarea" placeholder="Share your problem with us" />
+                <button type="submit" class="submitbutt" aria-label="Submit contact form">Submit</button>
+            </form>
+        </section>
+
+        <section class="contact-map animate-on-scroll" aria-label="Contact map and info">
+            <img src="images/7cb3bc01-3a62-4f04-80c1-952e413cbc8f.png" alt="Dream Car location map" />
+            <div>
+                <a href="https://maps.app.goo.gl/iPkihCWAXuuEj3k97" target="_blank" rel="noopener"
+                    aria-label="Visit us on Google Maps">Visit us</a>
+            </div>
+            <h2>Get in touch</h2>
+            <p><strong>Phone:</strong> +20 1029518700</p>
+            <p><strong>Email:</strong> moto99@mail.com</p>
+            <p><strong>Working hours:</strong> Mon-Fri: 9AM-7PM | Sat: 10AM-6PM</p>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Subscribe to our newsletter</h3>
+        <form class="inp" aria-label="Newsletter subscription" onsubmit="event.preventDefault();">
+            <input type="email" class="email" placeholder="Input your email" aria-label="Email address" required />
+            <button class="butt" type="submit" aria-label="Subscribe">Subscribe</button>
+        </form>
+        <h3 class="logo">Car Dealership Hub</h3>
+        <nav class="footer-links" aria-label="Footer links">
+            <a href="#pricing">Pricing</a>
+            <a href="#about">About us</a>
+            <a href="#features">Features</a>
+            <a href="#help">Help Center</a>
+            <a href="contactUs.html">Contact us</a>
+            <a href="#faqs">FAQs</a>
+            <a href="#careers">Careers</a>
+        </nav>
+        <div class="footer-bottom">
+            <a href="#" class="lang" aria-label="Language">English</a>
+            <a href="#">© 2024 Brand, Inc.</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#sitemap">Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">↑</button>
+
+    <script src="../js/main.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

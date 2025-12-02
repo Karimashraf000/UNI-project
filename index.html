@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dream Car - Find your perfect luxury vehicle from our extensive collection">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>DREAM CAR - Find Your Perfect Vehicle</title>
+    <style>
+        section.options {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section.options h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+        .partners-section {
+            margin: 60px 0;
+            padding: 40px 0;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .partners-section h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .partners-section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .partners-marquee {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .partners-track {
+            display: flex;
+            gap: 60px;
+            animation: scroll 20s linear infinite;
+            width: fit-content;
+        }
+
+        .partners-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-logo {
+            min-width: 200px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 20px 40px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+            z-index: 10;
+        }
+
+        .partner-logo .brand-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+            transition: color var(--transition);
+            white-space: nowrap;
+        }
+
+        .partner-logo:hover .brand-name {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo" aria-label="Dream Car Home">
+            <i class="fa-solid fa-car" style="color:var(--primary-color);"></i>
+            <span style="color:var(--primary-color);">Dream Car</span>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="searchpage/it.html">Search</a></li>
+                <li><a href="bookingpage/booking.html">Book</a></li>
+                <li><a href="aboutus/aboutus.html">About Us</a></li>
+                <li><a href="reviews/reviews.html">Reviews</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            <a href="login/login.html"><button class="button1" aria-label="Login">Login</button></a>
+            <a href="contact us/contactUs.html"><button class="button2" aria-label="Contact Us">Contact Us</button></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="herosection">
+            <img src="images1/land1.jpg" alt="Luxury car landscape" loading="lazy" class="hero-image" />
+            <div class="text">
+                <h1>FIND YOUR DREAM CAR TODAY!</h1>
+                <p>Explore a variety of cars tailored to your lifestyle</p>
+                <button onclick="window.location.href='searchpage/it.html'" aria-label="Explore Inventory">EXPLORE
+                    INVENTORY</button>
+            </div>
+        </section>
+
+        <!-- Partners Section - Moving Bar -->
+        <section class="partners-section">
+            <h1>Our Trusted Partners</h1>
+            <p>We collaborate with the world's leading automotive brands</p>
+            <div class="partners-marquee">
+                <div class="partners-track">
+                    <!-- First set of logos -->
+                    <div class="partner-logo">
+                        <div class="brand-name">BMW</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Mercedes-Benz</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Audi</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Tesla</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Porsche</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Lamborghini</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Ferrari</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Bentley</div>
+                    </div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="partner-logo">
+                        <div class="brand-name">BMW</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Mercedes-Benz</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Audi</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Tesla</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Porsche</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Lamborghini</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Ferrari</div>
+                    </div>
+                    <div class="partner-logo">
+                        <div class="brand-name">Bentley</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="options" aria-label="More options">
+            <h1>More Options</h1>
+            <div class="cards">
+                <div class="card1 animate-on-scroll" tabindex="0" onclick="window.location.href='searchpage/it.html'">
+                    <img src="images1/search.jpg" alt="Search for car" loading="lazy" />
+                    <h2>Search</h2>
+                    <p>Search for your dream car from our extensive inventory.</p>
+                </div>
+                <div class="card2 animate-on-scroll" tabindex="0"
+                    onclick="window.location.href='bookingpage/booking.html'">
+                    <img src="images1/bookurcar.jpg" alt="Book your car" loading="lazy" />
+                    <h2>Book a Car</h2>
+                    <p>Book a test drive or schedule a service appointment.</p>
+                </div>
+                <div class="card3 animate-on-scroll" tabindex="0"
+                    onclick="window.location.href='contact us/contactUs.html'">
+                    <img src="images1/contactusimg.jpg" alt="Contact us" loading="lazy" />
+                    <h2>Contact Us</h2>
+                    <p>Have questions or need assistance? Our friendly team is just a call away.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Subscribe to our newsletter</h3>
+        <form class="inp" aria-label="Newsletter subscription" onsubmit="event.preventDefault();">
+            <input type="email" class="email" placeholder="Input your email" aria-label="Email address" required>
+            <button class="butt" type="submit" aria-label="Subscribe">Subscribe</button>
+        </form>
+        <h3 class="logo">Car Dealership Hub</h3>
+        <nav class="footer-links" aria-label="Footer links">
+            <a href="#pricing">Pricing</a>
+            <a href="aboutus/aboutus.html">About us</a>
+            <a href="#features">Features</a>
+            <a href="#help">Help Center</a>
+            <a href="contact us/contactUs.html">Contact us</a>
+            <a href="#faqs">FAQs</a>
+            <a href="#careers">Careers</a>
+        </nav>
+        <div class="footer-bottom">
+            <a href="#">© 2025 Brand, Inc</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#sitemap">Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
