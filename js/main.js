@@ -1,11 +1,3 @@
-/* ========================================
-   DREAM CAR - Shared JavaScript
-   Utilities and Interactive Features
-   ======================================== */
-
-// ========================================
-// SCROLL TO TOP FUNCTIONALITY
-// ========================================
 function initScrollToTop() {
     const scrollBtn = document.getElementById('scrollToTopBtn');
     if (!scrollBtn) return;

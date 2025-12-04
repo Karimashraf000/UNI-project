@@ -205,6 +205,72 @@
             transform: scale(1.05);
         }
 
+        /* Payment Method Styles */
+        .payment-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .payment-section h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .payment-option i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-option label {
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .card-details {
+            margin-top: 15px;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
         footer {
             background-color: var(--footer-bg);
             padding: 0 17px 20px;
@@ -341,6 +407,14 @@
             .logo {
                 padding: 10px;
             }
+
+            .payment-methods-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -366,7 +440,6 @@
                     Us</button></a>
         </div>
     </header>
-
     <main>
         <section class="flex">
             <div class="tm">
@@ -388,27 +461,13 @@
                             <input type="text" name="Lname" id="Lname" placeholder="Last name" required />
                         </div>
                     </div>
-                    <br><br>
+                    <br>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="1234@gmail.com" required />
-                    <br><br>
-                    <label for="Company">Company name</label>
-                    <input type="text" name="Company" id="Company" />
-                    <br><br>
-                    <label for="size">Car size</label>
-                    <select id="size" required>
-                        <option hidden value="" disabled selected>Please select</option>
-                        <option>Mini Car</option>
-                        <option>Subcompact Car</option>
-                        <option>Compact Car</option>
-                        <option>Large Car</option>
-                        <option>Crossover</option>
-                        <option>Pickup Truck</option>
-                    </select>
-                    <br><br>
+                    <input type="email" name="email" id="email" placeholder=".....@gmail.com" required />
+                    <br>
                     <label for="date">Choose your date</label>
                     <input type="date" name="date" id="date" required />
-                    <br><br>
+                    <br>
                     <label for="topic">Which topic you need?</label>
                     <select id="topic" required>
                         <option hidden value="" disabled selected>Please select</option>
@@ -421,8 +480,55 @@
                         <option>Porsche 911</option>
                         <option>Lotus Emira</option>
                     </select>
+                    <br>
+                    <!-- Payment Methods Section -->
+                    <div class="payment-section">
+                        <h3>Payment Method</h3>
+                        <div class="payment-methods-grid">
+                            <div class="payment-option selected" onclick="selectPayment('card')">
+                                <input type="radio" name="payment" id="payCard" value="card" checked>
+                                <label for="payCard">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    <div>Credit Card</div>
+                                </label>
+                            </div>
+                            <div class="payment-option" onclick="selectPayment('paypal')">
+                                <input type="radio" name="payment" id="payPaypal" value="paypal">
+                                <label for="payPaypal">
+                                    <i class="fa-brands fa-paypal"></i>
+                                    <div>PayPal</div>
+                                </label>
+                            </div>
+                            <div class="payment-option" onclick="selectPayment('bank')">
+                                <input type="radio" name="payment" id="payBank" value="bank">
+                                <label for="payBank">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <div>Bank Transfer</div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-details" id="cardDetails">
+                            <label for="cardNumber">Card Number *</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" />
+                            <br><br>
+                            <div class="card-row">
+                                <div>
+                                    <label for="expiry">Expiry Date *</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" />
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV *</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="4" />
+                                </div>
+                            </div>
+                            <br>
+                            <label for="cardName">Name on Card *</label>
+                            <input type="text" id="cardName" placeholder="Fname Lname" />
+                        </div>
+                    </div>
+
                     <br><br>
-                    <button class="down" type="submit" aria-label="Submit booking">Submit</button>
+                    <button class="down" type="submit" aria-label="Submit booking">Complete Booking</button>
                 </form>
             </div>
         </section>
@@ -470,6 +576,42 @@
             input.addEventListener("change", checkFormFilled);
         });
 
+        // Payment method selection
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            const cardDetails = document.getElementById('cardDetails');
+            if (method === 'card') {
+                cardDetails.style.display = 'block';
+            } else {
+                cardDetails.style.display = 'none';
+            }
+        }
+
+        // Card number formatting
+        document.getElementById('cardNumber')?.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formatted;
+        });
+
+        // Expiry date formatting
+        document.getElementById('expiry')?.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVV - numbers only
+        document.getElementById('cvv')?.addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             const email = form.querySelector("input[type='email']");
@@ -486,14 +628,16 @@
                 company: document.getElementById('Company').value,
                 carSize: document.getElementById('size').value,
                 date: document.getElementById('date').value,
-                topic: document.getElementById('topic').value
+                topic: document.getElementById('topic').value,
+                paymentMethod: document.querySelector('input[name="payment"]:checked').value
             };
 
             // Save to localStorage
             localStorage.setItem('bookingData', JSON.stringify(bookingData));
 
-            // Redirect to checkout
-            window.location.href = '../checkout/checkout.html';
+            alert('Booking and Payment Successful!');
+            // Redirect to home or confirmation
+            window.location.href = '../index.html';
         });
     </script>
 </body>
