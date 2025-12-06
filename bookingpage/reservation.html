@@ -480,6 +480,9 @@
                         <option>Porsche 911</option>
                         <option>Lotus Emira</option>
                     </select>
+                    <br><br>
+                    <button class="down" type="button" aria-label="Submit appointment"
+                        onclick="submitAppointment()">Submit Appointment</button>
                     <br>
                     <!-- Payment Methods Section -->
                     <div class="payment-section">
@@ -576,6 +579,28 @@
             input.addEventListener("change", checkFormFilled);
         });
 
+        // Submit appointment function
+        function submitAppointment() {
+            // Validate appointment fields
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('Lname').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
+            const topic = document.getElementById('topic').value;
+
+            if (!fname || !lname || !email || !date || !topic) {
+                alert('Please fill in all appointment fields before submitting.');
+                return;
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            alert('Appointment details submitted! Please proceed to payment.');
+        }
+
         // Payment method selection
         function selectPayment(method) {
             document.querySelectorAll('.payment-option').forEach(option => {
@@ -625,8 +650,6 @@
                 firstName: document.getElementById('fname').value,
                 lastName: document.getElementById('Lname').value,
                 email: email.value,
-                company: document.getElementById('Company').value,
-                carSize: document.getElementById('size').value,
                 date: document.getElementById('date').value,
                 topic: document.getElementById('topic').value,
                 paymentMethod: document.querySelector('input[name="payment"]:checked').value
